@@ -21,8 +21,9 @@ class Parking_garage:
         else:    
             self.tickets[0] -= 1
             self.parkingSpaces[0] -= 1
-            print(self.tickets)  
-            print(self.parkingSpaces)   
+            print(f"There are {self.tickets} tickets remaining")  
+            print(f"There are {self.parkingSpaces} parking spaces remaining")   
+            print(self.currentTickets)  
             
         
     def payForParking(self):
@@ -33,14 +34,13 @@ class Parking_garage:
         """
 
     def leaveGarage(self):
-        pass
-        if self.currentTickets == True:
+        if self.currentTickets['paid'] == True: 
             print("Thank you, have a nice day!")
-            self.tickets += 1
-            self.parkingSpaces += 1
-            self.currentTickets['tickets'] = False
+            self.tickets[0] += 1
+            self.parkingSpaces[0] += 1
+            self.currentTickets['paid'] = False
             
-        else:
+        elif self.currentTickets['paid'] == False: 
             print("Please pay for your ticket before leaving")
             self.payForParking()
 
@@ -49,14 +49,23 @@ ticket = Parking_garage()
 class Garage:
     def run(self):
         while True:
-            nav = input("Would you like to enter the garage? (y/n)?")
-            if nav == 'y':
+            nav = input("What would you like to do? (enter/pay/leave)?")
+            if nav == 'enter':
                 ticket.takeTicket()
                 
-            elif nav == 'n':
-                print("Maybe next time!")
-                break
-            
+            elif nav == 'pay':
+                pass
+
+            elif nav == 'leave':
+                paid = input('have you paid for your ticket (y/n)?')
+                if paid == 'y':
+                    ticket.leaveGarage()
+
+                elif paid == 'n':
+                    ticket.payForParking()
+                    
+
+                
             else: 
                 print("Invalid Input. Please try again")
 
