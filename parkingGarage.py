@@ -1,24 +1,29 @@
-class Parking_garage:
-    def __init__(self, tickets, parkingSpaces, currentTickets=4):
-            self.tickets = tickets
-            self.parkingSpaces = parkingSpaces
-            self.currentTickets = currentTickets
+from tkinter import Y
 
-class Garage:
+
+class Parking_garage:
+    def __init__(self, tickets  , parkingSpaces, currentTickets):
+        self.tickets = tickets
+        self.parkingSpaces = parkingSpaces
+        self.currentTickets = currentTickets
+
     def __init__(self):
-        self.tickets = []
-        self.parkingSpaces = []
-        self.currentTickets = {}
-            
+        self.tickets = [4]
+        self.parkingSpaces = [4]
+        self.currentTickets = {"paid" : False}
         
-    def takeTicket(self, tickets, parkingSpaces):
+        
+    def takeTicket(self):
         print("Checking for space....")
-        if self.parkingSpaces == 0:
+        if self.parkingSpaces[0] == 0:
             print("We are currently full!")
             
         else:    
-            Parking_garage.tickets -= 1
-            Parking_garage.parkingSpaces -= 1     
+            self.tickets[0] -= 1
+            self.parkingSpaces[0] -= 1
+            print(self.tickets)  
+            print(self.parkingSpaces)   
+            
         
     def payForParking(self):
         pass
@@ -27,27 +32,34 @@ class Garage:
         
         """
 
-    def leaveGarage(self, tickets, parkingSpaces):
+    def leaveGarage(self):
         pass
-#         if currentTicket == True:
-#             print("Thank you, have a nice day!")
-#             Parking_garage.tickets += 1
-#             Parking_garage.parkingSpaces += 1
-#             Parking_garage.currentTickets['tickets'] = False
+        if self.currentTickets == True:
+            print("Thank you, have a nice day!")
+            self.tickets += 1
+            self.parkingSpaces += 1
+            self.currentTickets['tickets'] = False
             
-#         else:
-#             print("Please pay for your ticket before leaving")
-#             self.payForParking()
+        else:
+            print("Please pay for your ticket before leaving")
+            self.payForParking()
 
+ticket = Parking_garage()
+
+class Garage:
     def run(self):
         while True:
             nav = input("Would you like to enter the garage? (y/n)?")
             if nav == 'y':
-                self.takeTicket()
+                ticket.takeTicket()
                 
             elif nav == 'n':
                 print("Maybe next time!")
                 break
+            
+            else: 
+                print("Invalid Input. Please try again")
+
 
 garage = Garage()
 garage.run()
