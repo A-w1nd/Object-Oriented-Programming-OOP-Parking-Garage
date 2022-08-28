@@ -21,9 +21,13 @@ class Parking_garage:
         else:    
             self.tickets[0] -= 1
             self.parkingSpaces[0] -= 1
-            print(f"There are {self.tickets} tickets remaining")  
-            print(f"There are {self.parkingSpaces} parking spaces remaining")   
-            print(self.currentTickets)  
+            T = self.tickets[0]
+            P = self.parkingSpaces[0]
+            print("~-" * 15)
+            print(f"There are {T} tickets remaining")  
+            print(f"There are {P} parking spaces remaining")   
+            # print(self.currentTickets)  
+            print("~-" * 15)
             
         
     def payForParking(self):
@@ -62,10 +66,9 @@ class Garage:
                     ticket.leaveGarage()
 
                 elif paid == 'n':
+                    print("Please pay for your ticket before leaving")
                     ticket.payForParking()
                     
-
-                
             else: 
                 print("Invalid Input. Please try again")
 
