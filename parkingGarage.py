@@ -55,12 +55,21 @@ class Parking_garage:
             print("~-" * 15)
             self.payForParking()
 
+    def refund(self):
+        self.tickets[0] += 1
+        self.parkingSpaces[0] += 1
+        self.currentTickets['paid'] = True
+        print("~-" * 15)
+        print('Your refund has been completed')
+        print('We are sorry for the inconvenience')
+        print("~-" * 15)
+
 ticket = Parking_garage()
 
 class Garage:
     def run(self):
         while True:
-            nav = input("What would you like to do? (enter/pay/leave/quit)?")
+            nav = input("What would you like to do? (enter/pay/refund/leave/quit)?")
             if nav == 'enter':
                 ticket.takeTicket()
                 
@@ -81,6 +90,19 @@ class Garage:
 
                 elif paid == 'back':
                     garage.run()
+
+            elif nav == 'refund':
+                print('(back)')
+                ref = input("Would you like a refund (y/n)?")
+                if ref == 'y':
+                    ticket.refund()
+
+                elif ref == 'n':
+                        garage.run()
+
+                elif ref == 'back':
+                    garage.run()
+                    
 
             elif nav == 'quit':
                 print("~-" * 15)
