@@ -34,11 +34,33 @@ class Parking_garage:
             
         
     def payForParking(self):
-        pass
-        """
-        alex's part 
-        
-        """
+        pay = input("How many tickets (1/2/3)")
+
+        if pay == '1': 
+                    self.currentTickets['paid'] = True
+                    print("2.00")
+                    input("payment method (credit/debit)")
+                    print("please leave within 15 minutes")
+                    self.tickets[0] += 1
+                    self.parkingSpaces[0] += 1
+                
+                    
+        if pay == '2':
+                    self.currentTickets['paid'] == True
+                    print("4.00")
+                    input("payment method (credit/debit)")
+                    print("please leave within 15 minutes")
+                    self.tickets[0] += 2
+                    self.parkingSpaces[0] += 2
+            
+                    
+        if pay == '3':
+                    self.currentTickets['paid'] = True
+                    print("6.00")
+                    input("payment method (credit/debit)")
+                    print("please leave within 15 minutes")
+                    self.tickets[0] += 3
+                    self.parkingSpaces[0] += 3
 
     def leaveGarage(self):
         if self.currentTickets['paid'] == True: 
