@@ -68,6 +68,7 @@ class Garage:
                 pass
 
             elif nav == 'leave':
+                print('(back)')
                 paid = input('have you paid for your ticket (y/n)?')
                 if paid == 'y':
                     ticket.leaveGarage()
@@ -77,16 +78,20 @@ class Garage:
                     print("Please pay for your ticket before leaving")
                     print("~-" * 15)
                     ticket.payForParking()
+
+                elif paid == 'back':
+                    garage.run()
+
             elif nav == 'quit':
                 print("~-" * 15)
                 print('Thank you, have a nice day!')  
                 print("~-" * 15)
                 break      
+
             else: 
                 print("~-" * 15)
                 print("Invalid Input. Please try again")
                 print("~-" * 15)
-
 
 garage = Garage()
 garage.run()
